@@ -13,21 +13,21 @@ import java.util.List;
  */
 public abstract class Option implements Doclet.Option {
     private final String name;
-    private final boolean hasArg;
+    private final int argCount;
     private final String description;
     private final String parameters;
 
-    Option(String name, boolean hasArg,
+    Option(String name, int argCount,
            String description, String parameters) {
         this.name = name;
-        this.hasArg = hasArg;
+        this.argCount = argCount;
         this.description = description;
         this.parameters = parameters;
     }
 
     @Override
     public int getArgumentCount() {
-        return hasArg ? 1 : 0;
+        return argCount;
     }
 
     @Override
@@ -47,6 +47,6 @@ public abstract class Option implements Doclet.Option {
 
     @Override
     public String getParameters() {
-        return hasArg ? parameters : null;
+        return argCount > 0 ? parameters : null;
     }
 }

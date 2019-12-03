@@ -61,7 +61,8 @@ public class ModuleDoclet implements Doclet {
                 "-failOnHTMLError", "false",
                 "-failOnMissingDocs", "false",
 
-                "-link", "https://docs.oracle.com/javase/8/docs/api",
+                "-linkoffline", "https://docs.oracle.com/en/java/javase/11/docs/api/", "package-list",
+				//"-link", "https://docs.oracle.com/javase/8/docs/api",
 				"--ignore-source-errors",
 
                 "-subpackages",
@@ -519,7 +520,7 @@ public class ModuleDoclet implements Doclet {
 	public Set<? extends Option> getSupportedOptions() {
 		return Set.of(
 				new org.eclipse.ease.helpgenerator.Option(OPTION_PROJECT_ROOT,
-						true, "Root of the project", "<string>") {
+						optionLength(OPTION_PROJECT_ROOT) - 1, "Root of the project", "<string>") {
 					@Override
 					public boolean process(String s, List<String> list) {
 						fRootFolder = new File(list.get(0));
@@ -527,7 +528,7 @@ public class ModuleDoclet implements Doclet {
 					}
 				},
 				new org.eclipse.ease.helpgenerator.Option(OPTION_FAIL_ON_HTML_ERRORS.toString(),
-						true, "Fail on HTML Error", "<boolean>") {
+						optionLength(OPTION_FAIL_ON_HTML_ERRORS.toString()) - 1, "Fail on HTML Error", "<boolean>") {
 					@Override
 					public boolean process(String s, List<String> list) {
 						fFailOnHTMLErrors = Boolean.parseBoolean(list.get(0));
@@ -535,7 +536,7 @@ public class ModuleDoclet implements Doclet {
 					}
 				},
 				new org.eclipse.ease.helpgenerator.Option(OPTION_FAIL_ON_MISSING_DOCS.toString(),
-						true, "Fail on Missing Docs", "<boolean>") {
+						optionLength(OPTION_FAIL_ON_MISSING_DOCS.toString()) - 1, "Fail on Missing Docs", "<boolean>") {
 					@Override
 					public boolean process(String s, List<String> list) {
 						fFailOnMissingDocs = Boolean.parseBoolean(list.get(0));
@@ -543,7 +544,7 @@ public class ModuleDoclet implements Doclet {
 					}
 				},
 				new org.eclipse.ease.helpgenerator.Option(OPTION_LINK.toString(),
-						true, "Official documentation link to be included in the generated files", "<string>") {
+						optionLength(OPTION_LINK.toString()) - 1, "Official documentation link to be included in the generated files", "<string>") {
 					@Override
 					public boolean process(String s, List<String> list) {
 						try {
@@ -558,7 +559,7 @@ public class ModuleDoclet implements Doclet {
 					}
 				},
 				new org.eclipse.ease.helpgenerator.Option(OPTION_LINK_OFFLINE.toString(),
-						true, "Subpackages", "<string>") {
+						optionLength(OPTION_LINK_OFFLINE.toString()) - 1, "Subpackages", "<string>") {
 					@Override
 					public boolean process(String s, List<String> list) {
 
